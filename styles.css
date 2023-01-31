@@ -5,10 +5,17 @@ body {
   flex-direction: column;
 }
 
+h1 {
+  font-weight: 400;
+}
+h2 {
+  font-weight: 200;
+}
 .text {
   height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Oswald", sans-serif;
 }

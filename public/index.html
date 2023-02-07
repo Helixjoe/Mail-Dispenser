@@ -16,15 +16,23 @@
   </head>
   <body>
     <div class="text">
-      <h1>Mass Mail Dispatcher</h1>
+      <div class="header">
+        <h1>Mass Mail Dispatcher</h1>
+      </div>
       <h2>This is an internship project for Exposys Data Labs</h2>
       <ul>
         <li>Web based Mass-Mail dispatcher</li>
         <li>Recipients mails to be uploaded through CSV</li>
         <li>Sort out valid and invalid emails</li>
       </ul>
-      <form action="/" type="post">
+      <form action="/" method="post">
         <input type="file" class="fileInput" name="inputFile" />
+      </form>
+      <form action="/email" method="post">
+        <input type="text" name="email" />
+        <input type="text" name="subject" />
+        <input type="text" name="mailBody" />
+        <button type="submit">submit</button>
       </form>
     </div>
   </body>

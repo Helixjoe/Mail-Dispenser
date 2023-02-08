@@ -28,7 +28,7 @@
       <form action="/" method="post">
         <input type="file" class="fileInput" name="inputFile" />
       </form>
-      <form action="/email" method="post">
+      <form action="/email" enctype="multipart/form-data" method="post">
         <input type="text" name="email" />
         <input type="text" name="subject" />
         <input type="text" name="mailBody" />

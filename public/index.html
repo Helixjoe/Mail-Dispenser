@@ -25,13 +25,13 @@
         <li>Recipients mails to be uploaded through CSV</li>
         <li>Sort out valid and invalid emails</li>
       </ul>
-      <form action="/" method="post">
+      <!-- <form action="/" method="post">
         <input type="file" class="fileInput" name="inputFile" />
-      </form>
-      <form action="/email" enctype="multipart/form-data" method="post">
-        <input type="text" name="email" />
+      </form> -->
+      <form action="/sendMail" method="post">
+        <input type="email" name="email" />
         <input type="text" name="subject" />
-        <input type="text" name="mailBody" />
+        <textarea type="text" name="mailBody"></textarea>
         <button type="submit">submit</button>
       </form>
     </div>

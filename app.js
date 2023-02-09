@@ -29,8 +29,21 @@ const attachmentUpload = multer({
 app.get("/", function (req, res) {
   res.sendFile("/index.html");
 });
-app.post("/email", function (req, res) {
-  console.log(req.body);
+// Post route to handle retrieving data from HTML form to server
+app.post("/send_email", (req, res) => {
+  if (error) {
+    console.log(err);
+    return res.send("Error uploading file");
+  } else {
+    const recipient = req.body.email;
+    const subject = req.body.subject;
+    const message = req.body.message;
+    const attachmentPath = req.file.path;
+    console.log("recipient:", recipient);
+    console.log("subject:", subject);
+    console.log("message:", message);
+    console.log("attachmentPath:", attachmentPath);
+  }
 });
 app.listen(3000, function () {
   console.log("Server is running successfully on port 3000");

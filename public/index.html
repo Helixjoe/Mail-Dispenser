@@ -29,7 +29,8 @@
         <input type="file" class="fileInput" name="inputFile" />
       </form> -->
       <form action="/sendMail" method="post">
-        <input type="email" name="email" />
+        <input type="email" name="fromEmail" />
+        <input type="email" name="toEmail" />
         <input type="text" name="subject" />
         <textarea type="text" name="mailBody"></textarea>
         <button type="submit">submit</button>

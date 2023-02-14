@@ -1,18 +1,17 @@
 {
-  "name": "mail_dispenser",
+  "name": "javascript",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/Helixjoe/Mail-Dispenser.git",
-  "author": "Joel John <joeljohn5112@gmail.com>",
-  "license": "MIT",
+  "description": "",
+  "main": "import_csv.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@sendgrid/mail": "^7.7.0",
-    "dotenv": "^16.0.3",
+    "csv-parser": "^3.0.0",
     "express": "^4.18.2",
     "multer": "^1.4.5-lts.1",
-    "nodemailer": "^6.9.1"
+    "node-email-validation": "^1.0.4"
   }
 }

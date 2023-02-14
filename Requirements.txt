@@ -1,3 +1,0 @@
-1. Make a website that can import csv file data
-2. The emails imported need to be sorted as valid and invalid emails
-3. User should be able to login and the website should act as a mail client 

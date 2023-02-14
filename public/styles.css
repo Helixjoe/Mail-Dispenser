@@ -1,10 +1,16 @@
-/* index.html */
-
 body {
   text-align: center;
+  margin: 0px;
 }
 
-.heading {
-  text-align: center;
-  font-style: italic;
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 50px;
+}
+.mainHeadDiv {
+  padding: 200px;
+  background-color: #f3efe0;
+}
+.mainHeading {
 }

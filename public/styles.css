@@ -2,15 +2,32 @@ body {
   text-align: center;
   margin: 0px;
 }
-
+form {
+  display: flex;
+  flex-direction: column;
+}
+button {
+  width: 40%;
+  margin: 20px;
+}
 h1 {
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
-  font-size: 50px;
+  font-size: 70px;
 }
 .mainHeadDiv {
-  padding: 200px;
+  padding: 170px 170px 50px;
   background-color: #f3efe0;
 }
-.mainHeading {
+
+.uploadDiv {
+  background-color: #434242;
+  padding: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subhHeading {
+  color: #f3efe0;
 }

@@ -22,9 +22,12 @@
     <div class="mainHeadDiv">
       <h1 class="mainHeading">Mass Mail Dispenser</h1>
     </div>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-      <input type="file" name="file" />
-      <button type="submit">Upload</button>
-    </form>
+    <div class="uploadDiv">
+      <h2 class="subHeading">Upload The .csv File</h2>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button type="submit">Upload</button>
+      </form>
+    </div>
   </body>
 </html>

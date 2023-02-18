@@ -4,14 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Send Time</title>
+    <title>Email</title>
+    <link rel="stylesheet" href="./email.css" />
+    <script
+      src="https://kit.fontawesome.com/25d7bc2ff1.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu:wght@300;400;700&display=swap");
+    </style>
   </head>
   <body>
-    <form action="/email" method="post">
-      <input type="email" name="email" />
-      <input type="text" name="subject" />
-      <input type="text" name="text" />
-      <button type="submit" name="send">Send</button>
-    </form>
+    <form action="/email" method="post" style="max-width: 500px; margin: auto">
+      <h2>e-Mail Sender Application</h2>
+      <div class="input-wrapper">
+        <i class="fa fa-envelope icon"></i>
+
+        <input
+          class="input-field"
+          type="text"
+          placeholder="Subject"
+          name="subject"
+          required
+        />
+      </div>
+
+      <div class="input-wrapper">
+        <textarea
+          id="message"
+          name="text"
+          placeholder="Message body.."
+          style="height: 200px; width: 100%"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="send-btn" name="send">Send Mail</button>
   </body>
 </html>

@@ -71,6 +71,7 @@ app.post("/upload", upload.single("file"), function (req, res) {
 app.get("/email", function (req, res) {
   res.sendFile(__dirname + "/email.html");
 });
+
 app.post("/email", async function (req, res) {
   // const email = req.body.email;
 

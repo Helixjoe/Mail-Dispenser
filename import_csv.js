@@ -36,9 +36,14 @@ app.post("/upload", upload.single("file"), function (req, res) {
     }
   }
   //creating HTML Table
-  let htmlTable = "<h1 class='heading'>Emails</h1><table>";
+  let htmlTable =
+    "<h1 class='heading'>Emails</h1><a href='/email'><button type='button'>Continue</button></a><table>";
   htmlTable +=
-    "<tr><td><h2>Valid Emails<h2></td><td><h2>Invaild Emails</h2></td></tr>";
+    "<tr><td><h2>Valid Emails" +
+    valid.length +
+    "<h2></td><td><h2>Invaild Emails" +
+    (invalid.length - 1) +
+    "</h2></td></tr>";
   for (let i = 0; i < valid.length; i++) {
     htmlTable += "<tr><td>";
     htmlTable += valid[i];
@@ -53,8 +58,8 @@ app.post("/upload", upload.single("file"), function (req, res) {
   res.send(htmlTable);
 });
 
-app.get("/email", function (res, req) {
-  console.log(valid);
+app.get("/email", function (req, res) {
+  res.sendFile(__dirname + "/email.html");
 });
 app.listen(3000, function () {
   console.log("Server started");

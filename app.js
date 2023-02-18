@@ -157,7 +157,7 @@ app.post("/email", async function (req, res) {
       return console.log(error);
     }
   }
-  res.send("Messages sent succesfully");
+  res.sendFile(__dirname + "/success.html");
 });
 app.listen(3000, function () {
   console.log("Server started");

@@ -21,6 +21,9 @@ app.get("/", function (req, res) {
 app.post("/upload", upload.single("file"), function (req, res) {
   const file = req.file;
   const data = [];
+  //reset valid and invalid arrays
+  valid = [];
+  invalid = [];
   //manual parsing of csv file instead of using csv-parser
   const lines = file.buffer.toString().split("\n");
 
@@ -42,15 +45,17 @@ app.post("/upload", upload.single("file"), function (req, res) {
   }
   //creating HTML Table
   let htmlTable =
-    "<h1 class='heading'>Emails</h1><a href='/email'><button type='button'>Continue</button></a><table>";
+    "<body style='text-align:center;background-color: #fffbac;font-family: Helvetica, Arial, sans-serif;'>";
   htmlTable +=
-    "<tr><td><h2>Valid Emails" +
+    "<h1 class='heading' style='font-size:70px;'>Emails</h1><a href='/email'><button type='button'>Continue</button></a>";
+  htmlTable +=
+    "<div style=' display:flex;flex-direction:column;align-items:center;margin:30px;'><table style='text-align:center;padding:40px;'><tr><td><h2>Valid Emails : " +
     valid.length +
-    "<h2></td><td><h2>Invaild Emails" +
+    "<h2></td><td><h2 style='padding:10px;'>Invaild Emails : " +
     (invalid.length - 1) +
     "</h2></td></tr>";
   for (let i = 0; i < valid.length; i++) {
-    htmlTable += "<tr><td>";
+    htmlTable += "<tr><td style='padding:10px;'>";
     htmlTable += valid[i];
     htmlTable += "</td><td>";
     if (invalid[i] != undefined) {
@@ -58,7 +63,7 @@ app.post("/upload", upload.single("file"), function (req, res) {
     }
     htmlTable += "</td></tr>";
   }
-  htmlTable += "</table>";
+  htmlTable += "</table></div></body>";
   // res.sendFile(__dirname + "/public/filter.html");
   res.send(htmlTable);
 });

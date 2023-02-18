@@ -67,86 +67,89 @@ app.get("/email", function (req, res) {
   res.sendFile(__dirname + "/email.html");
 });
 app.post("/email", async function (req, res) {
-  const email = req.body.email;
+  // const email = req.body.email;
+
   const sub = req.body.subject;
   const text = req.body.text;
+  for (let i = 0; i < valid.length; i++) {
+    const email = valid[i];
+    const createTransporter = async () => {
+      // 1
+      const oauth2Client = new OAuth2(
+        process.env.CLIENT_ID,
+        process.env.CLIENT_SECRET,
+        "https://developers.google.com/oauthplayground"
+      );
 
-  const createTransporter = async () => {
-    // 1
-    const oauth2Client = new OAuth2(
-      process.env.CLIENT_ID,
-      process.env.CLIENT_SECRET,
-      "https://developers.google.com/oauthplayground"
-    );
-
-    // 2
-    oauth2Client.setCredentials({
-      refresh_token: process.env.REFRESH_TOKEN,
-    });
-
-    const accessToken = await new Promise((resolve, reject) => {
-      oauth2Client.getAccessToken((err, token) => {
-        if (err) {
-          reject("Failed to create access token :( " + err);
-        }
-        resolve(token);
+      // 2
+      oauth2Client.setCredentials({
+        refresh_token: process.env.REFRESH_TOKEN,
       });
-    });
 
-    // 3
-    const transporter = nodemailer.createTransport({
+      const accessToken = await new Promise((resolve, reject) => {
+        oauth2Client.getAccessToken((err, token) => {
+          if (err) {
+            reject("Failed to create access token :( " + err);
+          }
+          resolve(token);
+        });
+      });
+
+      // 3
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          type: "OAuth2",
+          user: process.env.EMAIL_IS,
+          accessToken,
+          clientId: process.env.CLIENT_ID,
+          clientSecret: process.env.CLIENT_SECRET,
+          refreshToken: process.env.REFRESH_TOKEN,
+        },
+      });
+
+      // 4
+      return transporter;
+    };
+
+    let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         type: "OAuth2",
         user: process.env.EMAIL_IS,
-        accessToken,
+        pass: process.env.PASS_IS,
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         refreshToken: process.env.REFRESH_TOKEN,
       },
     });
 
-    // 4
-    return transporter;
-  };
+    // e-mail option
+    let mailOptions = {
+      from: "helixjoe13927@gmail.com",
+      to: email,
+      subject: sub,
+      text: text,
+    };
 
-  let transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      type: "OAuth2",
-      user: process.env.EMAIL_IS,
-      pass: process.env.PASS_IS,
-      clientId: process.env.CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET,
-      refreshToken: process.env.REFRESH_TOKEN,
-    },
-  });
+    try {
+      // Get response from the createTransport
+      let emailTransporter = await createTransporter();
 
-  // e-mail option
-  let mailOptions = {
-    from: "helixjoe13927@gmail.com",
-    to: email,
-    subject: sub,
-    text: text,
-  };
+      // Send email
+      emailTransporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          // failed block
+          console.log(error);
+        } else {
+          // Success block
 
-  try {
-    // Get response from the createTransport
-    let emailTransporter = await createTransporter();
-
-    // Send email
-    emailTransporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        // failed block
-        console.log(error);
-      } else {
-        // Success block
-        console.log("Email sent: " + info.response);
-        return res.send("sent successfully");
-      }
-    });
-  } catch (error) {
-    return console.log(error);
+          return console.log("Email sent: " + info.response);
+        }
+      });
+    } catch (error) {
+      return console.log(error);
+    }
   }
   res.send("Messages sent succesfully");
 });

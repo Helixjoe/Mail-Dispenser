@@ -10,24 +10,61 @@ button {
   width: 40%;
   margin: 20px;
 }
-h1 {
+h1,
+h2 {
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
-  font-size: 70px;
+  font-size: 50px;
+  color: black;
+}
+h2 {
+  font-size: 30px;
+}
+p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: black;
 }
 .mainHeadDiv {
-  padding: 170px 170px 50px;
-  background-color: #f3efe0;
+  padding: 60px 170px;
+  background-color: #fffbac;
 }
-
-.uploadDiv {
-  background-color: #434242;
+/* About */
+.aboutDiv {
+  background-color: #ffd495;
   padding: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 100px 200px; */
+}
+.colored-section {
+  width: 1200px;
+}
+.carousel-inner {
+  padding: 0 170px;
+}
+.uploadDiv {
+  background-color: #e8f3d6;
+  padding: 50px 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.subhHeading {
-  color: #f3efe0;
+.subHeading {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  color: black;
+}
+.fa-upload {
+  margin: 20px;
+}
+.upload {
+  margin: 20px 0px;
+}
+.subBtn {
+  margin: 0px auto;
 }

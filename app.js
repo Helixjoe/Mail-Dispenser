@@ -1,9 +1,11 @@
+// Packages
 const express = require("express");
 const multer = require("multer");
 const validator = require("node-email-validation");
 const dotenv = require("dotenv");
 const { google } = require("googleapis");
 const nodemailer = require("nodemailer");
+// Creating package objects
 const app = express();
 const upload = multer();
 const OAuth2 = google.auth.OAuth2;
@@ -12,8 +14,10 @@ app.use(express.static("public"));
 //setting up body-parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+//static arrays
 let valid = [];
 let invalid = [];
+//GET Req
 app.get("/", function (req, res) {
   res.sendFile("/index.html");
 });

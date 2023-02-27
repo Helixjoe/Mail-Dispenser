@@ -68,7 +68,6 @@ app.post("/upload", upload.single("file"), function (req, res) {
     htmlTable += "</td></tr>";
   }
   htmlTable += "</table></div></body>";
-  // res.sendFile(__dirname + "/public/filter.html");
   res.send(htmlTable);
 });
 
@@ -163,6 +162,7 @@ app.post("/email", async function (req, res) {
   }
   res.sendFile(__dirname + "/success.html");
 });
+//PORT
 app.listen(3000, function () {
   console.log("Server started");
 });

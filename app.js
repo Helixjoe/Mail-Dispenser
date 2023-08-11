@@ -10,7 +10,6 @@ const app = express();
 const upload = multer();
 const OAuth2 = google.auth.OAuth2;
 dotenv.config();
-app.set("view engine", "ejs");
 app.use(express.static("public"));
 //setting up body-parser
 app.use(express.json());
@@ -69,8 +68,7 @@ app.post("/upload", upload.single("file"), function (req, res) {
     htmlTable += "</td></tr>";
   }
   htmlTable += "</table></div></body>";
-  // res.send(htmlTable);
-  res.render("table", {});
+  res.send(htmlTable);
 });
 
 app.get("/email", function (req, res) {
